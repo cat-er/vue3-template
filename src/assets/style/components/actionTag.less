@@ -1,0 +1,51 @@
+.action-tag {
+  align-items: center;
+  padding: var(--padding-base);
+  border: 1px solid transparent;
+  border-radius: var(--box-border-radius-base);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  user-select: none;
+
+  .action-tag-content {
+    margin-left: var(--margin-base);
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .action-tag-close {
+    border-radius: 100%;
+    border: 1px solid transparent;
+    padding: calc(var(--padding-base) / 2);
+    transition: all 0.3s ease;
+
+    .icon {
+      color: transparent;
+      font-size: 8px;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .action-tag-close:hover {
+    background-color: var(--color-border);
+  }
+}
+
+.action-tag:hover {
+  border-color: var(--color-border);
+  background-color: var(--color-hover);
+
+  .action-tag-close {
+    border-color: var(--color-border);
+    .icon {
+      color: var(--color-text-base);
+    }
+  }
+}
+
+.action-tag:active {
+  background-color: var(--color-border-minor);
+  border-color: transparent;
+}

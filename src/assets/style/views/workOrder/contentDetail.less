@@ -1,0 +1,109 @@
+.content-detail {
+  justify-content: space-between;
+  align-items: start;
+
+  .detail-card {
+    filter: drop-shadow(var(--box-base-shadow));
+  }
+
+  .detail-left {
+    width: 66.6%;
+
+    .work-client-doc > :not(:first-child) {
+      margin-top: var(--font-size-base);
+    }
+
+    .work-tasks {
+      .tasks-group {
+        .tasks-item {
+          .item {
+            padding: var(--font-size-base);
+            background-color: var(--color-background-content);
+            border-radius: var(--box-border-radius-base);
+
+            .icon-size {
+              font-size: calc(var(--font-size-base) * 1.25);
+            }
+
+            .label {
+              color: var(--color-text-minor);
+            }
+
+            .info {
+              align-items: start;
+            }
+          }
+        }
+
+        .tasks-item > :not(:first-child) {
+          margin-top: var(--margin-base);
+        }
+      }
+    }
+
+    .work-tasks > :not(:first-child) {
+      margin-top: var(--font-size-base);
+    }
+
+    .work-time-log {
+      .time-log-item {
+        .time-log-head {
+          color: var(--color-text-minor);
+        }
+        .time-log-foot {
+          justify-content: space-between;
+          align-items: center;
+
+          .check-in {
+            width: 40%;
+          }
+
+          .check-out {
+            width: 40%;
+          }
+        }
+      }
+    }
+
+    .work-time-log > :not(:first-child) {
+      margin-top: var(--font-size-base);
+    }
+
+    .work-deliverables {
+      .deliverables-item {
+        margin-bottom: var(--font-size-base);
+        .item {
+          .item-name {
+            .name {
+              max-width: 500px;
+              word-wrap: break-word;
+            }
+          }
+          .item-file {
+            justify-content: start;
+
+            .preview {
+              font-size: calc(var(--font-size-base) * 3);
+            }
+
+            .info {
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .detail-right {
+    width: 33.3%;
+  }
+
+  .detail-left > :not(:first-child) {
+    margin-top: var(--font-size-base);
+  }
+
+  .detail-right > :not(:first-child) {
+    margin-top: var(--font-size-base);
+  }
+}

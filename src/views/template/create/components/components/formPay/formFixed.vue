@@ -1,0 +1,116 @@
+<template>
+  <a-form name="pay" :model="formData" :label-col="{ span: 24 }" ref="formRef">
+    <a-row :gutter="16">
+      <a-col :span="12">
+        <a-form-item label="Total pay" :name="['base', 'amount']">
+          <a-input
+            v-no-chinese
+            v-model:value.number="formData.base.amount"
+            type="number"
+            size="large"
+          >
+            <template #prefix>
+              <DollarTwoTone />
+            </template>
+          </a-input>
+          <div class="form-note">
+            {{ t("hourly_rate_tip") }}
+          </div>
+        </a-form-item>
+      </a-col>
+      <a-col :span="12">
+        <a-form-item :label="t('approximate_hours_to_complete')" name="hours">
+          <a-input
+            v-no-chinese
+            v-model:value.number="formData.hours"
+            type="number"
+            size="large"
+          ></a-input>
+          <div class="form-note">
+            {{ t("approximate_hours_to_complete_fixed_tip") }}
+          </div>
+        </a-form-item>
+      </a-col>
+    </a-row>
+  </a-form>
+</template>
+
+<script setup lang="ts">
+import { ref, onMounted, watch, onUnmounted } from "vue";
+import { t } from "@/locale";
+import { DollarTwoTone } from "@ant-design/icons-vue";
+import { Pay, PayTypeEnum } from "@/api/api/workOrder/types";
+import { useOutPutState } from "@/views/template/create/hooks";
+import { WorkOrderListKey } from "@/views/workOrder/create/types";
+import { storeToRefs } from "pinia";
+import { useWorkOrderaTemplateCreateStore } from "@/stores";
+import _ from "lodash";
+
+const formData = ref<Pay>({
+  type: PayTypeEnum.FIXED,
+  base: {
+    amount: undefined,
+    units: 1
+  },
+  hours: undefined
+});
+
+// 校验
+const formRef = ref();
+const formValidate = async () => {
+  try {
+    await formRef.value.validate();
+    useOutPutState(WorkOrderListKey.PAY, {
+      pay: formData.value
+    });
+  } catch (err) {
+    useOutPutState(WorkOrderListKey.PAY, {
+      pay: formData.value
+    });
+  }
+};
+
+watch(
+  () => formData.value,
+  () => {
+    formValidate();
+  },
+  {
+    deep: true
+  }
+);
+
+const { currentTemplateData } = storeToRefs(useWorkOrderaTemplateCreateStore());
+const resetData: Pay = {
+  type: PayTypeEnum.FIXED,
+  base: {
+    amount: undefined,
+    units: 1
+  },
+  hours: undefined
+};
+
+const temEchoData = () => {
+  formData.value = _.merge(formData.value, resetData);
+  if (!currentTemplateData.value?.pay || currentTemplateData.value?.pay.type !== PayTypeEnum.FIXED)
+    return;
+  const { pay } = currentTemplateData.value;
+  formData.value = _.merge(formData.value, pay);
+};
+
+watch(
+  () => currentTemplateData.value,
+  () => {
+    temEchoData();
+  },
+  { immediate: true }
+);
+
+onMounted(() => {
+  formValidate();
+});
+
+onUnmounted(() => {
+  formData.value = _.merge(formData.value, resetData);
+});
+</script>

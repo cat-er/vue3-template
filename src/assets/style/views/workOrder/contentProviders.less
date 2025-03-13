@@ -1,0 +1,189 @@
+.content-providers {
+  .providers-box {
+    margin-top: var(--font-size-base);
+    align-items: start;
+    position: relative;
+
+    .providers {
+      flex-grow: 1;
+      // border: 1px solid blue;
+
+      .providers-filter {
+        margin-bottom: var(--font-size-base);
+        .filter-bar-head {
+          justify-content: start;
+          align-items: center;
+
+          .filter-search {
+            width: 180px;
+            transition: width 0.3s ease-in-out;
+          }
+
+          .filter-quality {
+            .quality-item {
+              justify-content: start;
+              align-items: start;
+            }
+          }
+
+          .filter-search-open {
+            width: 250px;
+          }
+        }
+
+        .filter-bar-head > :not(:last-child) {
+          margin-right: var(--margin-base);
+        }
+
+        .filter-bar-foot {
+          margin-top: calc(var(--font-size-base) * 2);
+          justify-content: space-between;
+          align-items: center;
+
+          .foot-miles {
+            align-items: center;
+            font-size: 14px;
+          }
+
+          .foot-sort {
+            align-items: center;
+            font-size: 14px;
+          }
+        }
+      }
+
+      .providers-item {
+        margin-bottom: var(--font-size-base);
+
+        .item-head {
+          .head-msg {
+            align-items: center;
+          }
+        }
+
+        .item-foot {
+          .foot-info {
+            justify-content: space-between;
+            align-items: center;
+
+            .info {
+              align-items: center;
+
+              .avatar-b {
+                background-color: var(--color-green);
+              }
+
+              .avatar-d {
+                background-color: var(--color-red);
+              }
+
+              .avatar-sc {
+                background-color: var(--color-yellow-deep);
+              }
+
+              .avatar-biz {
+                background-color: var(--color-blue);
+              }
+            }
+
+            .info > :not(:first-child) {
+              margin-left: var(--margin-base);
+            }
+
+            .info-right {
+              align-items: center;
+            }
+          }
+          .foot-rate {
+            justify-content: start;
+            align-items: center;
+
+            .rate {
+              justify-content: center;
+              align-items: center;
+            }
+
+            .rate > :not(:first-child) {
+              margin-left: calc(var(--margin-base) / 2);
+            }
+          }
+
+          .foot-rate > :not(:first-child) {
+            margin-left: var(--font-size-base);
+          }
+        }
+
+        .item-foot > :not(:first-child) {
+          margin-top: var(--font-size-base);
+        }
+      }
+
+      .providers-item[data-selected="true"] {
+        border: 1px solid var(--color-blue);
+      }
+    }
+
+    .no-providers {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    .providers-detail {
+      width: 640px;
+      min-height: 240px;
+      transition: all 0.5s ease-in-out;
+      margin-left: var(--font-size-base);
+      justify-content: center;
+      align-items: center;
+      position: sticky;
+      top: 65px;
+
+      .detail-no-click {
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+          font-size: calc(var(--font-size-base) * 2);
+          margin-bottom: var(--font-size-base);
+        }
+      }
+
+      .detail {
+        min-height: 240px;
+        .detail-head {
+          justify-content: end;
+          align-items: center;
+        }
+
+        .detail-content {
+          .info {
+            // padding-left: var(--font-size-base);
+            .msg {
+              margin-left: var(--font-size-base);
+              justify-content: space-evenly;
+              align-items: start;
+            }
+
+            .state {
+              align-items: center;
+            }
+          }
+
+          .map {
+          }
+
+          .bio {
+            padding: var(--font-size-base) 0;
+          }
+        }
+      }
+    }
+
+    .providers-detail-hide {
+      width: 0;
+      margin-left: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+  }
+}

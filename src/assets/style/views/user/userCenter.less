@@ -1,0 +1,36 @@
+.user-center {
+  .center-sider {
+    border-radius: var(--box-border-radius-base);
+    width: 15%;
+    height: var(--height-content);
+    background-color: var(--color-white);
+    overflow: auto;
+    margin-right: var(--font-size-base);
+  }
+
+  .center-content {
+    flex: 1;
+
+    .user-info {
+      .action {
+        justify-content: end;
+        align-items: center;
+      }
+
+      .avatar {
+        position: relative;
+      }
+
+      .upload {
+        width: 128px;
+        height: 128px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0; /* 元素隐藏 */
+        pointer-events: auto; /* 允许元素响应点击事件 */
+      }
+    }
+  }
+}
